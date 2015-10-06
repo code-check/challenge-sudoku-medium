@@ -6,7 +6,8 @@
         ".gitignore",
         "challenge.json",
         "codecheck.yml",
-        "target/*"
+        "target/*",
+        "src/Tests.cs"
     ],
     "test": "nunit-console target/SudokuChallengeMedium.dll"
 }
