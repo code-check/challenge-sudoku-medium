@@ -1,0 +1,11 @@
+﻿{
+  "editable": [
+  ],
+  "excludes": [
+    ".gitignore",
+    "challenge.json",
+    "codecheck.yml",
+    "target/*"
+  ],
+  "test": "nunit-console target/SudokuChallengeMedium.dll"
+}
