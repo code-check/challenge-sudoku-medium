@@ -1,11 +1,12 @@
 ﻿{
-  "editable": [
-  ],
-  "excludes": [
-    ".gitignore",
-    "challenge.json",
-    "codecheck.yml",
-    "target/*"
-  ],
-  "test": "nunit-console target/SudokuChallengeMedium.dll"
+    "editable": [
+        "src/Solver.cs"
+    ],
+    "excludes": [
+        ".gitignore",
+        "challenge.json",
+        "codecheck.yml",
+        "target/*"
+    ],
+    "test": "nunit-console target/SudokuChallengeMedium.dll"
 }
