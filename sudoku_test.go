@@ -8,7 +8,6 @@ func TestSolve1(t *testing.T) {
 	if !IsValid(Solve(sudoku)) {
 		t.Error("Solution for Puzzle 1 is not valid")
 	}
-		t.Errorf("%", Solve(sudoku))
 }
 
 func TestSolve2(t *testing.T) {
