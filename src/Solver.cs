@@ -43,7 +43,7 @@ namespace SudokuChallengeMedium.src
         /// <param name="y">Y position to check</param>
         /// <param name="val">Value to check</param>
         /// <returns>If <paramref name="val"/> is posible</returns>
-        private static bool SolveCell(byte[,] sudoku, int x, int y, byte val)
+        private static bool CheckColumn(byte[,] sudoku, int x, int y, byte val)
         {
             for (int iy = 0; iy < 9; iy++)
             {
@@ -157,7 +157,7 @@ namespace SudokuChallengeMedium.src
                         bool possible = true;
                         possible &= sudoku[x, y] == 0;
                         possible &= CheckRow(sudoku, x, y, val);
-                        possible &= SolveCell(sudoku, x, y, val);
+                        possible &= CheckColumn(sudoku, x, y, val);
                         possible &= CheckCell(sudoku, x, y, val);
                         ret[x, y, val - 1] = possible;
                     }
