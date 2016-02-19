@@ -1,4 +1,9 @@
 ﻿{
+﻿    "tags": [
+        "C#",
+        "Sudoku",
+        "Algorithm"
+    ],
     "editable": [
         "src/Solver.cs"
     ],
