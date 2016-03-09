@@ -5,6 +5,7 @@
         "Algorithm"
     ],
     "editable": [
+        "answer.md",
         "src/Solver.cs"
     ],
     "excludes": [
