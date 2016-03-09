@@ -5,6 +5,7 @@
     "Algorithm"
   ],
   "editable": [
+    "answer.md",
     "src/main/scala/*"
   ],
   "excludes": [

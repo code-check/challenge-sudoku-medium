@@ -1,42 +1,47 @@
-# Information
+# 内容
+これは数独問題を解くアルゴリズムを実装するチャレンジです。
 
-Sudoku is a number-placement puzzle.
-
-The goal of this challenge is to write a sudoku solving algorithm.  
+数独とは 9x9 のマス目に数字を並べていくパズルの事を指します。
 
 ## Step 1, Solve sudoku
 
-The application will send you 3 different puzzles with form of two-dimensional array.
+テストでは 3 つのパズルを 2 次元配列のデータとして solve 関数に渡します。
 
-Solve those puzzles through the "solve" function.
+数独の問題を解く関数 "solve" を実装してください。  
+処理を分けるために自分で関数を新しく作っても構いませんが、最終的に答えを返すのは solve 関数で行ってください。
 
 ## Step 2, Explain your code
-In [answer.md](./answer.md) write a brief explanation about how your code works and how you solved any problems which you've encountered.
+[answer.md](./answer.md) というファイルを用意してあるので、その中で
+- 書いたコードの振る舞い
+- どのような事に気をつけて書いたか
+- チャレンジに挑戦する中で起きた問題をどう解決 / 対処したのか
+等を書いてください。
 
-## Notes
-### Sudoku rules
 
-Sudoku is a puzzle made out of 9x9 matrix. We also have 9 sub-grids which are made of 3x3 cells.
-A valid sudoku contains the numbers 1-9 each 9 times while not breaking one simple rule: "A sub-grid, column or row can only contain each number once".
+#### 数独のルール
+数独は 9x9 の行列からなる 81 のマス目を 1~9 の数字で埋めるパズルです。また盤面は 3x3 の行列からなる 9 つのグループに分けられます。  
+数独のルールは非常にシンプルで、次の3つのみです。
+- 同じ行に重複した数字は入らない
+- 同じ列に重複した数字は入らない
+- 同じグループに重複した数字は入らない
 
-You can find more details in [Wikipedia](https://en.wikipedia.org/wiki/Sudoku).
+より詳しい内容については [Wikipedia](https://ja.wikipedia.org/wiki/%E6%95%B0%E7%8B%AC) 等を参照してください
+#### インフォメーション
 
-### Sudoku solution
+問題のすべてに独特な解法があります。
 
-Some sudoku has multiple solutions, but all of puzzles we provide have a unique solution.
+#### 条件
 
-#### Utility functions
+セル、縦列や横列それぞれにとって適切な移動であるかどうかをチェックする3つの機能を作成してください。
 
-This challenge provides 3 functions to check if a certain move is valid for either a cell, column or row.
-
-#### Puzzle 1
+#### 問題 1
 
 <table><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>9</td><td>8</td><td>&nbsp;</td><td>5</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>5</td><td>1</td><td>9</td><td>&nbsp;</td><td>7</td><td>4</td><td>2</td><td>&nbsp;</td></tr><tr><td>2</td><td>9</td><td>&nbsp;</td><td>4</td><td>&nbsp;</td><td>1</td><td>&nbsp;</td><td>6</td><td>5</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>1</td><td>4</td><td>&nbsp;</td><td>5</td><td>&nbsp;</td><td>8</td><td>&nbsp;</td><td>9</td><td>3</td></tr><tr><td>&nbsp;</td><td>2</td><td>6</td><td>7</td><td>&nbsp;</td><td>9</td><td>5</td><td>8</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>5</td><td>1</td><td>&nbsp;</td><td>3</td><td>6</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr></table>
 
-#### Puzzle 2
+#### 問題 2
 
 <table><tr><td>&nbsp;</td><td>&nbsp;</td><td>3</td><td>&nbsp;</td><td>2</td><td>&nbsp;</td><td>6</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>9</td><td>&nbsp;</td><td>&nbsp;</td><td>3</td><td>&nbsp;</td><td>5</td><td>&nbsp;</td><td>&nbsp;</td><td>1</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>1</td><td>8</td><td>&nbsp;</td><td>6</td><td>4</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>8</td><td>1</td><td>&nbsp;</td><td>2</td><td>9</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>7</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>8</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>6</td><td>7</td><td>&nbsp;</td><td>8</td><td>2</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>2</td><td>6</td><td>&nbsp;</td><td>9</td><td>5</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>8</td><td>&nbsp;</td><td>&nbsp;</td><td>2</td><td>&nbsp;</td><td>3</td><td>&nbsp;</td><td>&nbsp;</td><td>9</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>5</td><td>&nbsp;</td><td>1</td><td>&nbsp;</td><td>3</td><td>&nbsp;</td><td>&nbsp;</td></tr></table>
 
-#### Puzzle 3
+#### 問題 3
 
 <table><tr><td>9</td><td>&nbsp;</td><td>4</td><td>2</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>7</td></tr><tr><td>&nbsp;</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>7</td><td>&nbsp;</td><td>6</td><td>5</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>8</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>9</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>2</td><td>&nbsp;</td><td>9</td><td>&nbsp;</td><td>4</td><td>&nbsp;</td><td>6</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>4</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>2</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>1</td><td>6</td><td>&nbsp;</td><td>7</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>3</td><td>&nbsp;</td></tr><tr><td>3</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>5</td><td>7</td><td>&nbsp;</td><td>2</td></tr></table>
