@@ -1,26 +1,33 @@
-### Sudoku Solving (Medium)
+# Information
 
-The goal of this challenge is to write a sudoku solving algorithm.
+Sudoku is a number-placement puzzle.
 
-The application will send you 3 different puzzles which you have to solve through the "solve" function.
+The goal of this challenge is to write a sudoku solving algorithm.  
 
-#### Sudoku rules
+## Step 1, Solve sudoku
 
-A normal sudoku is made out of 81 (9x9) numbers which are within 1 square called the field.
+The application will send you 3 different puzzles with form of two-dimensional array.
 
-As the field is square, we have an equal 9 rows and 9 columns (x and y).
+Solve those puzzles through the "solve" function.
 
-We also have cells, these are 3x3 and do not overlap, thus we also have 9 of these.
+## Step 2, Explain your code
+In [answer.md](./answer.md) write a brief explanation about how your code works and how you solved any problems which you've encountered.
 
-A valid sudoku contains the numbers 1-9 each 9 times while not breaking one simple rule: "A cell, column or row can only contain each number once".
+## Notes
+### Sudoku rules
 
-#### Information
+Sudoku is a puzzle made out of 9x9 matrix. We also have 9 sub-grids which are made of 3x3 cells.
+A valid sudoku contains the numbers 1-9 each 9 times while not breaking one simple rule: "A sub-grid, column or row can only contain each number once".
 
-All of these puzzles have an unique solution.
+You can find more details in [Wikipedia](https://en.wikipedia.org/wiki/Sudoku).
 
-#### Provided
+### Sudoku solution
 
-3 functions to check if a certain move is valid for either a cell, column or row.
+Some sudoku has multiple solutions, but all of puzzles we provide have a unique solution.
+
+#### Utility functions
+
+This challenge provides 3 functions to check if a certain move is valid for either a cell, column or row.
 
 #### Puzzle 1
 

@@ -1,0 +1,14 @@
+{
+  "tags": [
+    "Sudoku",
+    "Algorithm"
+  ],
+  "editable": [
+    "answer.md"
+  ],
+  "excludes": [
+    ".gitignore",
+    "challenge.json"
+  ],
+  "test": "exit 1"
+}
