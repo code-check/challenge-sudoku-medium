@@ -5,6 +5,7 @@
         "Algorithm"
     ],
     "editable": [
+        "answer.md",
         "sudoku.go"
     ],
     "excludes": [
