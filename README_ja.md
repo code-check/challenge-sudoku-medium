@@ -12,12 +12,13 @@
   
 
 ## ステップ2, あなたの書いたコードについて説明してください
-[answer.md](./answer.md) というファイルを用意してあるので、その中で
-- 書いたコードの振る舞い
-- どのような事に気をつけて書いたか
-- チャレンジに挑戦する中で起きた問題をどう解決 / 対処したのか
-等を書いてください。
+[answer.md](./answer.md) というファイルを用意してあるので、その中に
+- どのように実装したか
+- どのような事に気をつけて実装したか、工夫した点は何か
+- チャレンジに挑戦する中で起きた問題、難しかった箇所
+- またそれをどのようにして対処したのか
 
+等を書いてください。
 
 #### 数独のルール
 数独は 9x9 の行列からなる 81 のマス目を 1~9 の数字で埋めるパズルです。また盤面は 3x3 の行列からなる 9 つのグループに分けられます。  
@@ -43,4 +44,3 @@
 #### 問題 3
 
 <table><tr><td>9</td><td>&nbsp;</td><td>4</td><td>2</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>7</td></tr><tr><td>&nbsp;</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>7</td><td>&nbsp;</td><td>6</td><td>5</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>8</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>9</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>2</td><td>&nbsp;</td><td>9</td><td>&nbsp;</td><td>4</td><td>&nbsp;</td><td>6</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>4</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>2</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>1</td><td>6</td><td>&nbsp;</td><td>7</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>3</td><td>&nbsp;</td></tr><tr><td>3</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>5</td><td>7</td><td>&nbsp;</td><td>2</td></tr></table>
-
