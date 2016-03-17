@@ -8,6 +8,10 @@
     "answer.md",
     "src/main/scala/*"
   ],
+  "readme": {
+    "en": "README.md",
+    "ja": "README_ja.md"
+  },
   "excludes": [
     ".gitignore",
     "challenge.json"
