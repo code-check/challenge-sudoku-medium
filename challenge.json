@@ -8,6 +8,10 @@
     "answer.md",
     "sudoku.py"
   ],
+  "readme": {
+    "en": "README.md",
+    "ja": "README_ja.md"
+  },
   "excludes": [
     ".gitignore",
     "challenge.json"
