@@ -9,6 +9,7 @@
     "answer.md",
     "src/main/scala/*"
   ],
+  "main": "src/main/scala/Solver.scala",
   "allowNewFile": true,
   "readme": {
     "en": "README.md",
