@@ -13,8 +13,7 @@
     "ja": "README_ja.md"
   },
   "excludes": [
-    ".gitignore",
     "challenge.json"
   ],
-  "test": "nosetests *.py"
+  "test": "nosetests testsudoku.py"
 }
