@@ -6,7 +6,8 @@
   ],
   "editable": [
     "answer.md",
-    "sudoku.py"
+    "sudoku.py",
+    ".gitignore"
   ],
   "readme": {
     "en": "README.md",
@@ -15,5 +16,6 @@
   "excludes": [
     "challenge.json"
   ],
+  "allowNewFile": true,
   "test": "nosetests testsudoku.py"
 }
