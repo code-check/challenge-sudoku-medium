@@ -1,19 +1,8 @@
-# Information
-
+## Sudoku 
 Sudoku is a number-placement puzzle.
+Solve the challenge by developing a sudoku solving algorithm.  
 
-The goal of this challenge is to write a sudoku solving algorithm.  
-
-## Step 1, Solve sudoku
-
-The application will send you 3 different puzzles with form of two-dimensional array.
-
-Solve those puzzles through the "solve" function.
-
-## Step 2, Explain your code
-In [answer.md](./answer.md) write a brief explanation about how your code works and how you solved any problems which you've encountered.
-
-## Notes
+## Challenge Description
 ### Sudoku rules
 
 Sudoku is a puzzle made out of 9x9 matrix. We also have 9 sub-grids which are made of 3x3 cells.
@@ -40,3 +29,37 @@ This challenge provides 3 functions to check if a certain move is valid for eith
 #### Puzzle 3
 
 <table><tr><td>9</td><td>&nbsp;</td><td>4</td><td>2</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>7</td></tr><tr><td>&nbsp;</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>7</td><td>&nbsp;</td><td>6</td><td>5</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>8</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>9</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>2</td><td>&nbsp;</td><td>9</td><td>&nbsp;</td><td>4</td><td>&nbsp;</td><td>6</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>4</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>2</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>1</td><td>6</td><td>&nbsp;</td><td>7</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>3</td><td>&nbsp;</td></tr><tr><td>3</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>5</td><td>7</td><td>&nbsp;</td><td>2</td></tr></table>
+
+### Solve sudoku
+
+The application will send you 3 different puzzles in the form of two-dimensional array.
+
+Solve those puzzles through the "solve" function.
+
+### Test Results *before* solving the challenge  
+- Initially all the tests will fail with following output
+```
+Write Test reults before solving challenge
+```
+
+### Test Results *after* solving the challenge
+- Solve the challenge to pass the tests
+```
+Write Test reults after solving challenge
+```
+
+--- --- ---
+
+## Run Tests
+To run tests locally install `codecheck` by running the following command in terminal 
+```
+$ npm install codecheck -g
+```
+To run tests in web editor please click in `RUN` button on left side of web editor
+
+## Explain your code
+In [answer.md](answer.md) write a brief explanation 
+- About how your code works
+- Problems faced while solving the challenge
+- How you solved those problems
+- Improvements/Feedbacks are also welcomed
