@@ -4,10 +4,10 @@
     "Algorithm"
   ],
   "editable": [
+    ".gitignore",
     "answer.md"
   ],
   "excludes": [
-    ".gitignore",
     "challenge.json"
   ],
   "test": "exit 1"
