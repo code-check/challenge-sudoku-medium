@@ -9,6 +9,7 @@
     "answer.md",
     "src/main/scala/*"
   ],
+  "allowNewFile": true,
   "readme": {
     "en": "README.md",
     "ja": "README_ja.md"
