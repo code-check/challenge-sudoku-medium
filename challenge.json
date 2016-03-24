@@ -18,5 +18,5 @@
     "challenge.json"
   ],
   "allowNewFile": true,
-  "test": "python3 -m \"nose\" testsudoku.py"
+  "test": "python3 -m nose testsudoku.py"
 }
