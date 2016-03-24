@@ -22,10 +22,6 @@
 [sudoku.py](./sudoku.py)を編集して、こちらを全て通過する数独の問題を解く関数 "solve" を実装してください。  
 処理を分けるために自分で関数を新しく作っても問題ございませんが、最終的に答えを返すのは solve 関数で行ってください。
 
-### 条件
-
-セル、縦列や横列それぞれにとって適切な移動であるかどうかをチェックする3つの機能を作成してください。
-
 #### 数独 1
 
 <table><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>9</td><td>8</td><td>&nbsp;</td><td>5</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>5</td><td>1</td><td>9</td><td>&nbsp;</td><td>7</td><td>4</td><td>2</td><td>&nbsp;</td></tr><tr><td>2</td><td>9</td><td>&nbsp;</td><td>4</td><td>&nbsp;</td><td>1</td><td>&nbsp;</td><td>6</td><td>5</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>1</td><td>4</td><td>&nbsp;</td><td>5</td><td>&nbsp;</td><td>8</td><td>&nbsp;</td><td>9</td><td>3</td></tr><tr><td>&nbsp;</td><td>2</td><td>6</td><td>7</td><td>&nbsp;</td><td>9</td><td>5</td><td>8</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>5</td><td>1</td><td>&nbsp;</td><td>3</td><td>6</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr></table>
@@ -60,6 +56,9 @@ codecheck: failure: 0
 
 ---
 ## テストの実行方法
+- テストはnosetestsで実行されます。
+- 使用するPythonのバージョンは2系を使用してください。(テストサーバは2.7.6を使用しています。)
+
 - codecheckでは、テストコードを実行して自分が正しく回答できているかどうかを確かめることができます
 - Webエディタで受験している場合は、consoleにある”Run”ボタンをクリックしてください
 - GitHubを活用したローカル受験では、以下の手順に従ってcodecheck CLIをインストールし、テストを実行してください
@@ -70,3 +69,4 @@ $ npm install codecheck -g
 ```
 
 - テストを実行するにはroot folderから `codecheck`を入力し、実行してください
+

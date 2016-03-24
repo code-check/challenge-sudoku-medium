@@ -60,7 +60,6 @@ def set_block(sudoku, possibilities, x, y, val):
         for iy in range(sy, sy + 3):
             possibilities[ix][iy][val - 1] = False
     return sudoku, possibilities
-#END_CHALLENGE
 def check_row(sudoku, x, y, val):
     for ix in range(9):
         if x == ix: continue
@@ -81,3 +80,4 @@ def check_cell(sudoku, x, y, val):
             if y == iy and x == ix: continue
             if sudoku[ix][iy] == val: return False
     return True
+#END_CHALLENGE

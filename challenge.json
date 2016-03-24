@@ -13,6 +13,7 @@
     "en": "README.md",
     "ja": "README_ja.md"
   },
+  "main": "sudoku.py",
   "excludes": [
     "challenge.json"
   ],
