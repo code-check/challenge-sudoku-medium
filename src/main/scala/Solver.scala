@@ -1,118 +1,136 @@
 object Solver {
   def solveSudoku(sudoku: Array[Array[Int]]):  Array[Array[Int]] = {
-    //BEGIN_CHALLENGE
-    solveRecursive(sudoku, generatePossibilities(sudoku))
-    //END_CHALLENGE
     sudoku
   }
-
-  //BEGIN_CHALLENGE
-  def solveRecursive(sudoku: Array[Array[Int]], possibilities: Array[Array[Array[Boolean]]], x: Int = 0, y: Int = 0): Boolean = {
-    var ix = x
-    var iy = y
-    while(sudoku(ix)(iy) != 0) {
-      iy += 1
-      if (iy >= 9) {
-        iy = 0
-        ix += 1
-        if (ix >= 9)
-          return true
-      }
-    }
-
-    for (v <- 1 to 9) {
-      if (possibilities(ix)(iy)(v - 1)) {
-        val clone = possibilities.clone()
-
-        var tx = ix
-        var ty = iy + 1
-        if (ty >= 9)
-        {
-          ty = 0
-          tx += 1
-          if (tx >= 9)
-            return true
-        }
-
-        if (solveRecursive(sudoku, possibilities, tx, ty))
-          return true
-        else {
-          sudoku(ix)(iy) = 0
-          clone.copyToArray(possibilities)
-        }
-      }
-    }
-    iy -= 1
-    if (iy < 0)
-    {
-      iy = 0
-      ix -= 1
-    }
-    false
-  }
-
-  def setBlock(sudoku: Array[Array[Int]], possibilities: Array[Array[Array[Boolean]]], x: Int, y: Int, v: Int) = {
-    sudoku(x)(y) = v
-
-    (0 until 9).foreach(possibilities(_)(y)(v - 1) = false)
-    (0 until 9).foreach(possibilities(x)(_)(v - 1) = false)
-
-    val startx = x - (x % 3)
-    val starty = y - (y % 3)
-    for (x <- 0 until 3; y <- 0 until 3)
-      possibilities(x + startx)(y + starty)(v - 1) = false
-  }
-
-  def generatePossibilities(sudoku: Array[Array[Int]]): Array[Array[Array[Boolean]]] =
-    (for (x <- 0 until 9) yield {
-      for (y <- 0 until 9) yield {
-        for (v <- 1 to 9) yield {
-          val t1 = checkColumn(sudoku, x, y, v)
-          val t2 = checkRow(sudoku, x, y, v)
-          val t3 = checkCell(sudoku, x, y, v)
-          val ret = sudoku(x)(y) == 0 &&
-            checkRow(sudoku, x, y, v) &&
-            checkColumn(sudoku, x, y, v) &&
-            checkCell(sudoku, x, y, v)
-          ret
-        }
-      }
-    }).map(_.map(_.toArray).toArray).toArray
-  //END_CHALLENGE
-
-  /**
-   * Checks if a certain value is allowed within a row
-   * @param sudoku Current sudoku field
-   * @param x X position to check
-   * @param y Y position to check
-   * @param v value to check
-   * @return true if move is possible
-   */
-  def checkRow(sudoku: Array[Array[Int]], x: Int, y: Int, v: Int): Boolean =
-    !(0 until 9).filter(_ != x).exists(sudoku(_)(y) == v)
-
-  /**
-   * Checks if a certain value is allowed within a column
-   * @param sudoku Current sudoku field
-   * @param x X position to check
-   * @param y Y position to check
-   * @param v value to check
-   * @return true if move is possible
-   */
-  def checkColumn(sudoku: Array[Array[Int]], x: Int, y: Int, v: Int): Boolean =
-    !(0 until 9).filter(_ != y).exists(sudoku(x)(_) == v)
-
-  /**
-   * Checks if a certain value is allowed within a cell
-   * @param sudoku Current sudoku field
-   * @param x X position to check
-   * @param y Y position to check
-   * @param v value to check
-   * @return true if move is possible
-   */
-  def checkCell(sudoku: Array[Array[Int]], x: Int, y: Int, v: Int): Boolean =
-    !(for(ix <- 0 until 3; iy <- 0 until 3) yield (ix, iy))
-      .map { case (ix, iy) => (ix + (x - (x % 3)), iy + (y - (y % 3))) }
-      .filter { case (ix, iy) => !(ix == x && iy == y) }
-      .exists { case (ix, iy) => sudoku(ix)(iy) == v }
 }
+
+// BEGIN_CHALLENGE
+case class Sudoku(sudoku: Array[Array[Int]]) {
+
+  def extractRow(n: Int): Array[Int] = sudoku(n - 1)
+  def extractCol(n: Int): Array[Int] = sudoku.map(v => v(n-1))
+  def extractGrid(n: Int): Array[Int] = {
+    val fromRow = (n - 1) / 3 * 3
+    val fromCol = (n - 1) % 3 * 3
+
+    extractGrid(fromRow - 1, fromCol - 1)
+  }
+
+  def extractGrid(x: Int, y: Int): Array[Int] = {
+    val fromRow = (y - 1) / 3 * 3
+    val fromCol = (x - 1) / 3 * 3
+    sudoku.slice(fromRow, fromRow + 3).map(_.slice(fromCol, fromCol + 3)).flatten
+  }
+
+  def check(nums: Array[Int]): Boolean = {
+    (1 to 9).forall(v => nums.filter(_ == v).size == 1)
+  }
+
+  def duplicate(nums: Array[Int]): Boolean = {
+    (1 to 9).exists(v => nums.filter(_ == v).size > 1)
+  }
+
+  def isSolved: Boolean = {
+    val rows  = (1 to 9).map(extractRow)
+    val cols  = (1 to 9).map(extractCol)
+    val grids = (1 to 9).map(extractGrid)
+
+    (rows ++ cols ++ grids).forall(check)
+  }
+
+  def isValid: Boolean = {
+    val hasCandidate = (for {
+      y <- 1 to 9
+      x <- 1 to 9
+    } yield {
+      calcCell(x, y)
+    }).forall(_.isValid)
+
+    val rows  = (1 to 9).map(extractRow)
+    val cols  = (1 to 9).map(extractCol)
+    val grids = (1 to 9).map(extractGrid)
+
+    val hasDuplicate = (rows ++ cols ++ grids).exists(duplicate)
+    hasCandidate && !hasDuplicate
+  }
+
+  def isInvalid: Boolean = !isValid
+
+  def getValue(x: Int, y: Int): Int = sudoku(y - 1)(x - 1)
+
+  def isAllowed(x: Int, y: Int, v: Int): Boolean = {
+    !extractRow(y).contains(v) &&
+    !extractCol(x).contains(v) &&
+    !extractGrid(x, y).contains(v)
+  }
+
+  def calcCell(x: Int, y: Int): Cell = {
+    val v = getValue(x, y)
+    if (v != 0) {
+      Cell(x, y, Array(v))
+    } else {
+      val ret = Cell(x, y, (1 to 9).filter(v => isAllowed(x, y, v)).toArray)
+      ret
+    }
+  }
+
+  def clone(x: Int, y: Int, v: Int): Sudoku = {
+    val nums = sudoku.zipWithIndex.map { case (row, idx) =>
+      if (idx == y - 1) {
+        row.zipWithIndex.map { case (n, idx) =>
+          if (idx == x - 1) {
+            v
+          } else {
+            n
+          }
+        }
+      } else {
+        row
+      }
+    }
+    Sudoku(nums)
+  }
+
+  def calcNext: List[Sudoku] = {
+    if (isSolved) {
+      List(this)
+    } else if (isInvalid) {
+      Nil
+    } else {
+      val cells = (for {
+        y <- 1 to 9
+        x <- 1 to 9
+      } yield {
+        calcCell(x, y)
+      })
+      val nums = cells.map(_.toInt).toArray.grouped(9).toArray
+      if (nums2str(nums) != nums2str(sudoku)) {
+        Sudoku(nums).calcNext
+      } else {
+        val cell = cells.filter(_.values.length > 1).sortBy(_.values.length).head
+        cell.values.map(v => clone(cell.x, cell.y, v)).map(_.calcNext).flatten.toList
+      }
+    }
+  }
+
+  def nums2str(nums: Array[Array[Int]]): String = {
+    nums.flatten.mkString("")
+  }
+
+  def solve: Array[Array[Int]] = {
+    calcNext match {
+      case x :: Nil => x.sudoku
+      case any => throw new Exception("No answer")
+    }
+  }
+
+}
+
+case class Cell(x: Int, y: Int, values: Array[Int]) {
+  def toInt = if (values.length == 1) values(0) else 0
+
+  def isValid = values.size > 0
+
+  override def toString = s"($x, $y) = [${values.mkString(",")}]"
+}
+//END_CHALLENGE

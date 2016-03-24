@@ -5,22 +5,31 @@ class Tests extends FlatSpec with Matchers {
     "003020600900305001001806400008102900700000008006708200002609500800203009005010300",
     "000000000009805100051907420290401065000000000140508093026709580005103600000000000",
     "904200007010000000000706500000800090020904060040002000001607000000000030300005702"
+    // "234679815678512349519843276841325697357961482962487153423798561196254738785136924",
+    // "437618529862359714591274836953462178214785693678931245129546387346827951785193462",
+    // "467215938359487126821963475184326759976854213235791864742538691693142587518679342"
   )
 
-  val sudoku1 = validateSudoku(Solver.solveSudoku(parseSudoku(sudokus(0))))
-  val sudoku2 = validateSudoku(Solver.solveSudoku(parseSudoku(sudokus(1))))
-  val sudoku3 = validateSudoku(Solver.solveSudoku(parseSudoku(sudokus(2))))
 
   "Sudoku 1" should "validate" in {
-    sudoku1 should ===(true)
+    val input = parseSudoku(sudokus(0))
+    val sudoku = Solver.solveSudoku(input)
+    validateSudoku(sudoku) should ===(true)
+    compare(input, sudoku) should ===(true)
   }
 
   "Sudoku 2" should "validate" in {
-    sudoku2 should ===(true)
+    val input = parseSudoku(sudokus(1))
+    val sudoku = Solver.solveSudoku(input)
+    validateSudoku(sudoku) should ===(true)
+    compare(input, sudoku) should ===(true)
   }
 
   "Sudoku 3" should "validate" in {
-    sudoku3 should ===(true)
+    val input = parseSudoku(sudokus(2))
+    val sudoku = Solver.solveSudoku(input)
+    validateSudoku(sudoku) should ===(true)
+    compare(input, sudoku) should ===(true)
   }
 
   def parseSudoku(sudoku: String) =
@@ -31,34 +40,29 @@ class Tests extends FlatSpec with Matchers {
       .toArray
 
   def validateSudoku(sudoku: Array[Array[Int]]): Boolean = {
-    def checkCells: Boolean =
-      !(for {
-        v <- 1 to 9
-        c <- 0 until 9
-      } yield {
-          val y = c - (c % 3)
-          val x = 3 * (c % 3)
-          (for (ix <- 0 until 3; iy <- 0 until 3) yield (ix, iy))
-            .map { case (ix, iy) => (ix + (x - (x % 3)), iy + (y - (y % 3))) }
-            .count { case (ix, iy) => sudoku(ix)(iy) == v }
-        }).exists(_ >= 2)
+    def extractRow(n: Int): Array[Int] = sudoku(n - 1)
+    def extractCol(n: Int): Array[Int] = sudoku.map(v => v(n-1))
+    def extractGrid(n: Int): Array[Int] = {
+      val fromRow = (n - 1) / 3 * 3
+      val fromCol = (n - 1) % 3 * 3
 
-    // Check the columns
-    def checkColumns: Boolean =
-      !(for {
-        v <- 1 to 9
-        x <- 0 until 9
-      } yield (0 until 9).count(sudoku(x)(_) == v)
-        ).exists(_ >= 2)
+      sudoku.slice(fromRow, fromRow + 3).map(_.slice(fromCol, fromCol + 3)).flatten
+    }
+    def check(nums: Array[Int]): Boolean = {
+      (1 to 9).forall(v => nums.filter(_ == v).size == 1)
+    }
+    val rows  = (1 to 9).map(extractRow)
+    val cols  = (1 to 9).map(extractCol)
+    val grids = (1 to 9).map(extractGrid)
 
-    // Check the rows
-    def checkRows: Boolean =
-      !(for {
-        v <- 1 to 9
-        y <- 0 until 9
-      } yield (0 until 9).count(sudoku(_)(y) == v)
-        ).exists(_ >= 2)
+    (rows ++ cols ++ grids).forall(check)
+  }
 
-    checkCells & checkColumns & checkRows
+  def compare(input: Array[Array[Int]], output: Array[Array[Int]]): Boolean = {
+    val fInput = input.flatten
+    val fOutput = output.flatten
+    fInput.zip(fOutput).forall { case (a, b) =>
+      a == 0 || a == b
+    }
   }
 }
