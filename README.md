@@ -1,29 +1,26 @@
 ## Sudoku 
-Sudoku is a number-placement puzzle.
-
-Solve the challenge by implementing a sudoku solving algorithm and pass the [tests](testfilepath).  
+Sudoku is a number-placement puzzle.Solve the challenge by implementing a sudoku solving algorithm and pass the [tests](testfilepath).  
 
 ## Challenge Description
 ### Solve sudoku
+- The challenge will send you [3 different puzzles](sudoku.md) in the form of two-dimensional array.
+- Solve those puzzles through the **solve** function in [filename](filepath).
 
-The challenge will send you [3 different puzzles](sudoku.md) in the form of two-dimensional array.
-
-Solve those puzzles through the **solve** function in [filename](filepath).
-
-**Note:** _Some sudoku have multiple solutions, but sudoku puzzles in challenge should have a **unique solution**._
+**Note:** 
+_Some sudoku have multiple solutions, but sudoku puzzles in challenge should have a **unique solution**._
 
 ### Utility functions
 
 This challenge provides 3 functions namely `CheckCell`, `CheckColumn`, `CheckRow` to check if a certain move is valid for either a cell, column or row respectively.
 
 ### Test Results *before* solving the challenge  
-- Initially all the tests will fail with following output
+Initially all the tests will fail with following output
 ```
 Write Test reults before solving challenge
 ```
 
 ### Test Results *after* solving the challenge
-- Solve the challenge to pass the tests
+Solve the challenge to pass the tests
 ```
 Write Test reults after solving challenge
 ```
