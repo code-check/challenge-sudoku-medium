@@ -1,0 +1,1 @@
+test: nosetests testsudoku.py
