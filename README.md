@@ -14,6 +14,10 @@ Solve those puzzles through the "solve" function.
 In [answer.md](./answer.md) write a brief explanation about how your code works and how you solved any problems which you've encountered.
 
 ## Notes
+### About Python
+- The test is run with `nosetests`.
+- Python version is 3.x. (TestServer uses 3.4.3)
+
 ### Sudoku rules
 
 Sudoku is a puzzle made out of 9x9 matrix. We also have 9 sub-grids which are made of 3x3 cells.
@@ -24,10 +28,6 @@ You can find more details in [Wikipedia](https://en.wikipedia.org/wiki/Sudoku).
 ### Sudoku solution
 
 Some sudoku has multiple solutions, but all of puzzles we provide have a unique solution.
-
-#### Utility functions
-
-This challenge provides 3 functions to check if a certain move is valid for either a cell, column or row.
 
 #### Puzzle 1
 
