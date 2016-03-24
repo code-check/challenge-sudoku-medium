@@ -16,7 +16,7 @@ In [answer.md](./answer.md) write a brief explanation about how your code works 
 ## Notes
 ### About Python
 - The test is run with `nosetests`.
-- Python version is 3.x. (TestServer uses 3.4.3)
+- Python version is 2.x. (TestServer uses 2.7.6)
 
 ### Sudoku rules
 
