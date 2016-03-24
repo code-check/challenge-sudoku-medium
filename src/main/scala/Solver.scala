@@ -13,7 +13,7 @@ case class Sudoku(sudoku: Array[Array[Int]]) {
     val fromRow = (n - 1) / 3 * 3
     val fromCol = (n - 1) % 3 * 3
 
-    extractGrid(fromRow - 1, fromCol - 1)
+    extractGrid(fromCol + 1, fromRow + 1)
   }
 
   def extractGrid(x: Int, y: Int): Array[Int] = {
