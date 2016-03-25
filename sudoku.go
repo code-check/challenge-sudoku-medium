@@ -108,7 +108,6 @@ func GeneratePossibilities(data [][]int) [][][]bool {
 	}
 	return ret
 }
-//END_CHALLENGE
 
 func CheckRow(data [][]int, x int, y int, val int) bool {
 	for ix := 0; ix < 9; ix++ {
@@ -150,3 +149,4 @@ func CheckCell(data [][]int, x int, y int, val int) bool {
 	}
 	return true
 }
+//END_CHALLENGE
