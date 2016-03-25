@@ -3,26 +3,38 @@
 import "testing"
 
 func TestSolve1(t *testing.T) {
-	sudoku := ParseSudoku("000000000009805100051907420290401065000000000140508093026709580005103600000000000")
+	input := ParseSudoku("000000000009805100051907420290401065000000000140508093026709580005103600000000000")
+	output := Solve(input)
 	
-	if !IsValid(Solve(sudoku)) {
-		t.Error("Solution for Puzzle 1 is not valid")
+	if !IsValid(output) {
+		t.Error("Solution for Puzzle is not valid")
+	}
+	if !IsSamePuzzle(input, output) {
+		t.Error("Solution for Puzzle is not solved from input")
 	}
 }
 
 func TestSolve2(t *testing.T) {
-	sudoku := ParseSudoku("003020600900305001001806400008102900700000008006708200002609500800203009005010300")
-		
-	if !IsValid(Solve(sudoku)) {
-		t.Error("Solution for Puzzle 2 is not valid")
+	input := ParseSudoku("003020600900305001001806400008102900700000008006708200002609500800203009005010300")
+	output := Solve(input)
+	
+	if !IsValid(output) {
+		t.Error("Solution for Puzzle is not valid")
+	}
+	if !IsSamePuzzle(input, output) {
+		t.Error("Solution for Puzzle is not solved from input")
 	}
 }
 
 func TestSolve3(t *testing.T) {
-	sudoku := ParseSudoku("904200007010000000000706500000800090020904060040002000001607000000000030300005702")
-		
-	if !IsValid(Solve(sudoku)) {
-		t.Error("Solution for Puzzle 3 is not valid")
+	input := ParseSudoku("904200007010000000000706500000800090020904060040002000001607000000000030300005702")
+	output := Solve(input)
+	
+	if !IsValid(output) {
+		t.Error("Solution for Puzzle is not valid")
+	}
+	if !IsSamePuzzle(input, output) {
+		t.Error("Solution for Puzzle is not solved from input")
 	}
 }
 
@@ -98,6 +110,17 @@ func IsValid(sudoku [][]int) bool {
 						return false
 					}
 				}
+			}
+		}
+	}
+	return true
+}
+
+func IsSamePuzzle(input, output [][]int) bool {
+	for y:=0; y<9; y++ {
+		for x:=0; x<9; x++ {
+			if (input[y][x] != 0 && input[y][x] != output[y][x]) {
+				return false
 			}
 		}
 	}

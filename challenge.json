@@ -1,20 +1,21 @@
-﻿{
+{
     "tags": [
         "GoLang",
         "Sudoku",
         "Algorithm"
     ],
     "editable": [
+        ".gitignore",
         "answer.md",
         "sudoku.go"
     ],
-  "readme": {
-    "en": "README.md",
-    "ja": "README_ja.md"
-  },
+    "readme": {
+        "en": "README.md",
+        "ja": "README_ja.md"
+    },
     "excludes": [
-        ".gitignore",
         "challenge.json"
     ],
+    "main": "sudoku.go",
     "test": "go test"
 }
