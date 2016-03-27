@@ -10,19 +10,33 @@ namespace SudokuChallengeMedium.src
     [TestFixture]
     public class Tests
     {
-        private string Sudokus = "000000000009805100051907420290401065000000000140508093026709580005103600000000000;003020600900305001001806400008102900700000008006708200002609500800203009005010300;904200007010000000000706500000800090020904060040002000001607000000000030300005702";
+        private string[] Sudokus = new string[] {
+            "000000000009805100051907420290401065000000000140508093026709580005103600000000000",
+            "003020600900305001001806400008102900700000008006708200002609500800203009005010300", 
+            "904200007010000000000706500000800090020904060040002000001607000000000030300005702"
+        };
         
         [Test]
-        public void SolveSudokus()
+        public void test1() {
+            SolveSudoku(Sudokus[0]);
+        }
+
+        [Test]
+        public void test2() {
+            SolveSudoku(Sudokus[1]);
+        }
+        
+        [Test]
+        public void test3() {
+            SolveSudoku(Sudokus[2]);
+        }
+        
+        public void SolveSudoku(string data)
         {
-            Assert.AreEqual(3, Sudokus
-                .Split(';')
-                .Select(x => ParseSudoku(x))
-                .Select(x => WriteSudoku(x))
-                .Select(x => Solver.Solve(x))
-                .Select(x => WriteSudoku(x))
-                .Count(x => IsValid(x)),
-                "One or more solutions seem to be invalid");
+            byte[,] input = ParseSudoku(data);
+            byte[,] output = Solver.Solve(input);
+            Assert.IsTrue(IsValid(output), "Solution is invalid");
+            Assert.IsTrue(IsSamePuzzle(input, output), "Solution is not solved from input");
         }
 
         private byte[,] WriteSudoku(byte[,] sudoku)
@@ -106,6 +120,17 @@ namespace SudokuChallengeMedium.src
             if (sudokusum != sudoku.Cast<byte>().Sum(x => x))
                 Assert.Fail("The total sum of the sudoku appears to be incorrect [{0}]", sudoku.Cast<byte>().Sum(x => x));
 
+            return true;
+        }
+
+        private bool IsSamePuzzle(byte[,] input, byte[,] output) {
+            for (int x=0; x<9; x++) {
+                for (int y=0; y<9; y++) {
+                    if (input[x, y] != 0 && input[x, y] != output[x, y]) {
+                        return false;
+                    }
+                }
+            }
             return true;
         }
     }
