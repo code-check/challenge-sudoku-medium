@@ -13,10 +13,11 @@ namespace SudokuChallengeMedium.src
             //BEGIN_CHALLENGE
             bool[, ,] possibilities = GeneratePossibilities(sudoku);
             SolveRecursive(sudoku, possibilities);
-            return sudoku;
             //END_CHALLENGE
+            return sudoku;
         }
 
+        //BEGIN_CHALLENGE
         /// <summary>
         /// Checks if a certain value in allowed within a row
         /// </summary>
@@ -77,7 +78,6 @@ namespace SudokuChallengeMedium.src
             return true;
         }
 
-        //BEGIN_CHALLENGE
         public static bool SolveRecursive(byte[,] sudoku, bool[, ,] possibilities, int x = 0, int y = 0)
         {
             while (sudoku[x, y] != 0)
