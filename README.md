@@ -25,9 +25,14 @@ You can find more details in [Wikipedia](https://en.wikipedia.org/wiki/Sudoku).
 
 Some sudoku has multiple solutions, but all of puzzles we provide have a unique solution.
 
-#### Utility functions
+### About test
+Build and test command are written in codecheck.yml.
+Or you can run test by codecheck CLI.
 
-This challenge provides 3 functions to check if a certain move is valid for either a cell, column or row.
+```
+npm install -g codecheck
+codecheck
+```
 
 #### Puzzle 1
 
