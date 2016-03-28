@@ -5,16 +5,17 @@
         "Algorithm"
     ],
     "editable": [
+        ".gitignore",
         "answer.md",
         "src/Solver.cs"
     ],
-  "readme": {
-    "en": "README.md",
-    "ja": "README_ja.md"
-  },
+    "readme": {
+        "en": "README.md",
+        "ja": "README_ja.md"
+    },
     "excludes": [
-        ".gitignore",
         "challenge.json"
     ],
+    "main": "src/Solver.cs",
     "test": "nunit-console target/SudokuChallengeMedium.dll"
 }
