@@ -25,9 +25,8 @@ You can find more details in [Wikipedia](https://en.wikipedia.org/wiki/Sudoku).
 
 Some sudoku has multiple solutions, but all of puzzles we provide have a unique solution.
 
-#### Utility functions
-
-This challenge provides 3 functions to check if a certain move is valid for either a cell, column or row.
+### About test
+Test command is `sbt test`.
 
 #### Puzzle 1
 
