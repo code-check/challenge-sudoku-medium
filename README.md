@@ -5,11 +5,11 @@ The goal of this challenge is to implement algorithm to solve given 3 sudoku puz
 - A sudoku is type of puzzle made out of 9x9 (81) numbers/cells which is considered to be further divided into 9 sub-grids of 3x3 matrix.
 - A valid sudoku contains the numbers 1-9 each 9 times while not breaking one simple rule: "A sub-grid, column or row can only contain each number once".
 
-i.e Sudoku puzzle can be viewed as matrix is 9x9.
-- Rows are counted from top to bottom.
-- Rows are horizontal, counted vertically, defined by ``y``.
-- Columns are counted from left to right.
-- Columns are counted horizontally, defined by ``x``
+  i.e Sudoku puzzle can be viewed as matrix is 9x9.
+  - Rows are counted from top to bottom.
+  - Rows are horizontal, counted vertically, defined by ``y``.
+  - Columns are counted from left to right.
+  - Columns are counted horizontally, defined by ``x``
 
 [Sudoku Puzzle](https://en.wikipedia.org/wiki/Sudoku)
 
